@@ -1,4 +1,3 @@
-```
 <p align="center">
   <a href="https://laravel.com" target="_blank">
     <img src="https://laravel.com/img/logomark.min.svg" width="90" alt="Laravel Logo">
