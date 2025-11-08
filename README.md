@@ -1,30 +1,69 @@
 ```
-# login-via-google
+<p align="center">
+  <a href="https://laravel.com" target="_blank">
+    <img src="https://laravel.com/img/logomark.min.svg" width="90" alt="Laravel Logo">
+  </a>
+</p>
 
-A minimal, ready-to-use **Laravel 12** example project implementing **Google OAuth2 Login** via Laravel Socialite.  
-This repository is built for **learning and reference**, focusing on the **structure and logic flow** of Socialite integration — no UI styling or frontend libraries.
+<h1 align="center">login-via-google</h1>
+<p align="center">Minimal Socialite Integration — Clean, Educational, No Style</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-12.x-red?logo=laravel" alt="Laravel Version">
+  <img src="https://img.shields.io/badge/PHP-8.2+-blue?logo=php" alt="PHP Version">
+  <img src="https://img.shields.io/badge/Socialite-Official-success" alt="Socialite">
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License">
+</p>
+
+---
+
+A minimal, ready-to-use **Laravel 12** project implementing **Google OAuth2 Login** via Laravel Socialite.  
+This repository is built for **learning and reference**, focusing on the **structure and logic flow** of Socialite integration — no UI styling, no frontend frameworks.
+
+---
+
+## 📚 Table of Contents
+- [Project Preview](#-project-preview)
+- [Features](#-features)
+- [Requirements](#-requirements)
+- [Clone & Run](#-clone--run)
+- [Quick Setup](#-quick-setup)
+- [Google OAuth Configuration](#-google-oauth-configuration)
+- [Environment Setup (.env)](#-environment-setup-env)
+- [Usage Flow](#-usage-flow)
+- [Troubleshooting](#-troubleshooting)
+- [License](#-license)
+- [Best Practices](#-best-practices)
 
 ---
 
 ## 🔍 Project Preview
 
-This project shows the **core process of Google OAuth login in Laravel**, from redirect to callback handling.  
-No CSS, no JS, just functional backend flow — perfect for developers who want to **study the authentication mechanism itself**.
+This project demonstrates the **core process of Google OAuth login in Laravel**, from redirect to callback handling.  
+It’s intentionally left raw — no CSS, no JS — to help developers focus purely on **how Socialite integrates into Laravel’s authentication flow**.
 
-📸 **Recommended screenshot ideas for the preview section:**
-- Terminal running `php artisan serve`  
-- Browser showing the “Login via Google” raw link or callback success page  
-- Optional: Database table view (showing name, email, google_id, avatar stored after login)
+📸 **Recommended screenshots for your preview:**
+- `terminal-run.png` → Laravel running `php artisan serve`
+- `preview-login.png` → Browser showing the raw “Login via Google” link or success callback
+- `db-result.png` → Database table view showing saved user data (name, email, google_id, avatar)
+
+Add screenshots using:
+
+```markdown
+<p align="center">
+  <img src="preview-login.png" width="600" alt="Google Login Example">
+</p>
+```
 
 ---
 
 ## ✨ Features
 
-- Google Login integration via official **Laravel Socialite**
-- Stores basic user info (name, email, Google ID, avatar)
-- Clean, minimal Laravel 12 folder structure
+- Google Login using official **Laravel Socialite**
+- Saves user profile data (name, email, Google ID, avatar)
+- Simple and readable Laravel 12 folder structure
 - Works both locally and in production
-- Ideal for studying or starting a Socialite-based project
+- Designed for learning — no styling or third-party scripts
 
 ---
 
@@ -34,27 +73,40 @@ No CSS, no JS, just functional backend flow — perfect for developers who want 
 - **Laravel 12**
 - **Composer**
 - **Database** (MySQL, MariaDB, or SQLite)
-- **Google Cloud Project** with an OAuth consent screen published
+- **Google Cloud Project** with OAuth consent screen **published**
+
+---
+
+## 🧰 Clone & Run
+
+```bash
+# Clone repository
+git clone https://github.com/Asyraf2003/login-via-google.git
+cd login-via-google
+
+# Install dependencies
+composer install
+
+# Copy environment file
+cp .env.example .env
+
+# Generate application key
+php artisan key:generate
+
+# Migrate database (optional if not using DB)
+php artisan migrate
+
+# Run the app
+php artisan serve
+```
+
+> Default URL: http://127.0.0.1:8000
 
 ---
 
 ## 🚀 Quick Setup
 
-```bash
-# 1. Install dependencies
-composer install
-
-# 2. Copy environment example file
-cp .env.example .env
-
-# 3. Generate the application key
-php artisan key:generate
-
-# 4. Run migrations (if needed)
-php artisan migrate
-```
-
-> If you’re using Valet, Nginx, or Docker, make sure your `APP_URL` matches your actual local domain.
+Before running, make sure you have created your Google OAuth credentials.
 
 ---
 
@@ -62,7 +114,7 @@ php artisan migrate
 
 ### 1. Create OAuth Credentials
 
-Go to [Google Cloud Console → APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials)
+Go to **[Google Cloud Console → APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials)**
 
 - Click **Create Credentials → OAuth 2.0 Client ID**
 - Choose **Web Application**
@@ -74,7 +126,7 @@ Valet:      https://your-app.test/auth/google/callback
 Production: https://your-domain.com/auth/google/callback
 ```
 
-Copy your **Client ID** and **Client Secret**.
+Then copy your **Client ID** and **Client Secret**.
 
 ---
 
@@ -94,7 +146,7 @@ Ensure `config/services.php` includes:
 
 ## ⚙️ Environment Setup (.env)
 
-Open your `.env` file and configure as follows:
+Edit your `.env` file and update these values:
 
 ```dotenv
 APP_NAME="Laravel Google Login"
@@ -115,7 +167,7 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback
 ```
 
-Clear cached configuration after saving:
+Clear cached config afterward:
 
 ```bash
 php artisan config:clear
@@ -126,55 +178,59 @@ php artisan cache:clear
 
 ## 🧪 Usage Flow
 
-1. Start the Laravel development server:
+1. Start the development server  
    ```bash
    php artisan serve
    ```
 
-2. Open your browser and visit:
+2. Open your browser at  
    ```
    http://127.0.0.1:8000
    ```
 
-3. Click the **Login via Google** link.
+3. Click the **Login via Google** link (plain HTML link).  
+   You’ll be redirected to Google for authorization.  
 
-4. After authentication, you’ll be redirected back to the app via:
+4. After login approval, you’ll be redirected back to  
    ```
    /auth/google/callback
    ```
-   and automatically logged in (user data stored in DB).
+   and automatically logged in.  
+   User data is stored in your database (name, email, google_id, avatar).
 
 ---
 
 ## 🧯 Troubleshooting
 
 **redirect_uri_mismatch**  
-Make sure the redirect URI in `.env` is identical to one registered in Google Cloud (no extra slashes, same protocol and host).
+Ensure the `GOOGLE_REDIRECT_URI` in `.env` exactly matches your registered redirect URI in Google Cloud.  
+No trailing slashes, exact protocol and host.
 
 **invalid_client / unauthorized_client**  
-Recheck your Google Client ID and Secret for typos or whitespace.
+Double-check your Client ID and Secret for missing or extra characters.  
+Ensure your OAuth consent screen is **Published**.
 
-**State or CSRF errors**  
-If testing without sessions or on different hosts, add `.stateless()` in your Socialite callback.
+**State or CSRF mismatch**  
+If you’re testing locally without proper sessions, use `->stateless()` in the callback controller.
 
-**Database not saving user info**  
-Ensure migration includes `google_id` and `avatar` columns, and that `fillable` is set properly in the `User` model.
+**User not stored in DB**  
+Confirm your migrations include `google_id` and `avatar` fields, and that your `User` model allows mass assignment.
 
 ---
 
 ## 📄 License
 
-This project is open-sourced under the [MIT License](https://opensource.org/licenses/MIT).
+Open-sourced under the [MIT License](https://opensource.org/licenses/MIT).
 
 ---
 
 ## 💡 Best Practices
 
-- Keep your `.env` file private — never commit credentials.
-- Always use HTTPS in production.
-- Document all redirect URLs for each environment (local, staging, production).
-- If extending this project, add error handling and token revocation.
-- Perfect for developers who want to learn the **core logic** before moving on to styled or complex implementations.
+- Never commit your real `.env` credentials.
+- Use HTTPS and secure cookies in production.
+- Document every environment’s redirect URLs (local, staging, prod).
+- For extended use, handle token expiration and revocation.
+- Great for learning Socialite’s raw structure before adding frontend or UI layers.
 
 ---
 ```
