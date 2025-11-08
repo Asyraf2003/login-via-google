@@ -49,11 +49,9 @@ It’s intentionally left raw — no CSS, no JS — to help developers focus pur
 
 Add screenshots using:
 
-```markdown
 <p align="center">
   <img src="preview-login.png" width="600" alt="Google Login Example">
 </p>
-```
 
 ---
 
@@ -233,4 +231,3 @@ Open-sourced under the [MIT License](https://opensource.org/licenses/MIT).
 - Great for learning Socialite’s raw structure before adding frontend or UI layers.
 
 ---
-```
