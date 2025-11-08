@@ -41,15 +41,8 @@ This repository is built for **learning and reference**, focusing on the **struc
 This project demonstrates the **core process of Google OAuth login in Laravel**, from redirect to callback handling.  
 It’s intentionally left raw — no CSS, no JS — to help developers focus purely on **how Socialite integrates into Laravel’s authentication flow**.
 
-📸 **Recommended screenshots for your preview:**
-- `terminal-run.png` → Laravel running `php artisan serve`
-- `preview-login.png` → Browser showing the raw “Login via Google” link or success callback
-- `db-result.png` → Database table view showing saved user data (name, email, google_id, avatar)
-
-Add screenshots using:
-
 <p align="center">
-  <img src="preview-login.png" width="600" alt="Google Login Example">
+  <img src="images/preview-login.png" width="600" alt="Google Login Example">
 </p>
 
 ---
